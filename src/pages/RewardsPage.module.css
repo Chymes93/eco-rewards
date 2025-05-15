@@ -1,0 +1,252 @@
+/* RewardsPage.module.css */
+.rewardsContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerSection {
+  background-color: #228B22;
+  padding: 2rem 1rem;
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+}
+
+.headerTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.headerSubtitle {
+  font-size: 1.25rem;
+}
+
+.mainSection {
+  flex-grow: 1;
+  background-color: black;
+  padding: 2rem 1rem;
+}
+
+.mainContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.profileCard {
+  background-color: black;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.profileHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  background-color: #d1d5db;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.levelLabel {
+  font-size: 1.25rem;
+}
+
+.progressBar {
+  width: 100%;
+  max-width: 20rem;
+  height: 1rem;
+  background-color: #4b5563;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #60a5fa, #fbbf24);
+}
+
+.levelIndicator {
+  display: flex;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.levelIcon {
+  color: #60a5fa;
+  margin-right: 0.5rem;
+}
+
+.pointsCard {
+  background-color: white;
+  color: black;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.pointsValue {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.pointsLabel {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.pointsIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.levelsProgress {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.progressLine {
+  position: absolute;
+  height: 0.5rem;
+  background-color: white;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.levelsContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.levelItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.levelBadge {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background-color: white;
+}
+
+.levelBadgeCurrent {
+  background-color: #10b981;
+}
+
+.levelName {
+  margin-top: 0.5rem;
+  text-align: center;
+  color: white;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.statCard {
+  background-color: white;
+  color: black;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: 1.875rem;
+  font-weight: bold;
+}
+
+.statLabel {
+  color: #6b7280;
+}
+
+.statIcon {
+  font-size: 2.5rem;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .headerSection {
+    padding: 2rem;
+  }
+  
+  .mainSection {
+    padding: 2rem;
+  }
+  
+  .profileHeader {
+    flex-direction: row;
+  }
+  
+  .userInfo {
+    margin-bottom: 0;
+  }
+  
+  .pointsCard {
+    width: auto;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
