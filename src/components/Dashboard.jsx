@@ -41,7 +41,7 @@ const Dashboard = () => {
           <div className="flex flex-col lg:flex-row gap-8 items-start mb-8 justify-between">
             {/* Left: Stats */}
             <div className="grid grid-cols-2 gap-6 w-full lg:max-w-[640px]">
-              <div className="bg-white rounded-xl shadow-md p-6 flex flex-row items-center min-w-[140px]">
+              <div className="bg-white rounded-xl shadow-xl  p-6 flex flex-row items-center min-w-[140px] hover:scale-105 transition-transform duration-300">
                 <div className="w-16 h-16 flex items-center justify-center mr-4">
                   <img src={giftIcon} alt="Gift box" className="" />
                 </div>
@@ -55,7 +55,7 @@ const Dashboard = () => {
                   </span>
                 </div>
               </div>
-              <div className="bg-white rounded-xl shadow-md p-6 flex flex-row items-center min-w-[140px]">
+              <div className="bg-white rounded-xl shadow-xl p-6 flex flex-row items-center min-w-[140px] hover:scale-105 transition-transform duration-300">
                 <div className="w-16 h-16 flex items-center justify-center mr-4">
                   <img src={badgeIcon} alt="Badge" className="" />
                 </div>
@@ -69,7 +69,7 @@ const Dashboard = () => {
                   </span>
                 </div>
               </div>
-              <div className="bg-white rounded-xl shadow-md p-6 flex flex-row items-center min-w-[140px]">
+              <div className="bg-white rounded-xl shadow-xl p-6 flex flex-row items-center min-w-[140px] hover:scale-105 transition-transform duration-300">
                 <div className="w-16 h-16 flex items-center justify-center mr-4">
                   <img src={fireIcon} alt="Fire" className="" />
                 </div>
@@ -83,7 +83,7 @@ const Dashboard = () => {
                   </span>
                 </div>
               </div>
-              <div className="bg-white rounded-xl shadow-md p-6 flex flex-row items-center min-w-[140px]">
+              <div className="bg-white rounded-xl shadow-xl p-6 flex flex-row items-center min-w-[140px] hover:scale-105 transition-transform duration-300">
                 <div className="w-16 h-16 flex items-center justify-center mr-4">
                   <img src={missionIcon} alt="Flag" className="" />
                 </div>
@@ -114,7 +114,7 @@ const Dashboard = () => {
               </span>
               <span className="text-xl font-poppins mb-6">Eco points</span>
               <button
-                className="w-full py-3 bg-green-500 hover:bg-green-600 text-white text-xl rounded-lg font-poppins transition"
+                className="w-full py-3 bg-green-500 hover:bg-green-600 text-white text-xl rounded-lg font-poppins transition duration-300"
                 onClick={handleExchange}
               >
                 Exchange

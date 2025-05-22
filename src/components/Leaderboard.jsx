@@ -168,7 +168,7 @@ const Leaderboard = () => {
           <div className="mt-6 text-center">
             <Link
               to="/leaderboard"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-eco-green text-white rounded-full hover:bg-eco-green-dark transition-colors duration-200 text-sm font-medium"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-eco-green text-white rounded-full hover:bg-green-600 transition-colors duration-200 text-sm font-medium"
             >
               View Full Leaderboard
               <FaChevronRight size={12} />

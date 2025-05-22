@@ -197,7 +197,7 @@ const ReceiptHistory = () => {
                     <td className="px-4 py-3 font-poppins">{r.description}</td>
                     <td className="px-4 py-3 font-poppins">{r.date}</td>
                     <td className="px-4 py-3 font-poppins">{r.receiptId}</td>
-                    <td className="px-4 py-3 font-poppins text-green-700 underline cursor-pointer">
+                    <td className="px-4 py-3 font-poppins text-black cursor-pointer rounded-full hover:bg-green-700 hover:text-white">
                       {r.action}{' '}
                       <span className="inline-block align-middle">&#8635;</span>
                     </td>

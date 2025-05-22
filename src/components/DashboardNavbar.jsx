@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Group from '../assets/Group.png';
 import { ShoppingCart, User, Bell, ChevronDown, Menu, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import './DashboardNavbar.css';
 
 const DashboardNavbar = () => {
   const location = useLocation();
@@ -36,38 +37,38 @@ const DashboardNavbar = () => {
   }, []);
 
   const ecoActivitiesItems = [
-    { name: 'Recycling', path: '/eco-activities/recycling' },
-    { name: 'Energy Saving', path: '/eco-activities/energy' },
-    { name: 'Water Conservation', path: '/eco-activities/water' },
+    { name: 'Upload Receipt', path: '/upload-receipt' },
+    { name: 'Join Challenge', path: '/join-challenge' },
+    { name: 'Refer Friend', path: '/refer-friend' },
   ];
 
   const carbonCenterItems = [
-    { name: 'Carbon Footprint', path: '/carbon-center/footprint' },
-    { name: 'Offset Programs', path: '/carbon-center/offset' },
-    { name: 'Green Tips', path: '/carbon-center/tips' },
+    { name: 'Record Planting', path: '/carbon-center/footprint' },
+    { name: 'Record Purchase', path: '/carbon-center/offset' },
+    { name: 'Log Transport', path: '/carbon-center/tips' },
   ];
 
   return (
     <nav className="bg-white text-gray-800 px-6 py-4 sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Left: Logo and Navigation */}
-        <div className="flex items-center space-x-12 ">
+        <div className="flex items-center space-x-4 md:space-x-6 lg:space-x-12">
           {/* Logo */}
           <Link to="/" className="">
-            <img src={Group} alt="Ecorewards Logo" className="w-8 h-8" />
+            <img src={Group} alt="Ecorewards Logo" className="Eco-Logo w-8 h-8" />
           </Link>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-6 md:space-x-2">
             <Link
               to="/"
-              className="font-poppins text-gray-800 hover:text-green-600"
+              className="font-poppins text-gray-800 hover:text-green-600 text-sm md:text-sm lg:text-base whitespace-nowrap"
             >
               Home
             </Link>
             <Link
               to="/dashboard"
-              className={`font-poppins text-gray-800 hover:text-green-600 ${
+              className={`font-poppins text-gray-800 hover:text-green-600 text-sm md:text-sm lg:text-base whitespace-nowrap ${
                 location.pathname === '/dashboard'
                   ? 'border-b-2 border-green-600'
                   : ''
@@ -79,7 +80,7 @@ const DashboardNavbar = () => {
             {/* Eco Activities Dropdown */}
             <div className="relative">
               <button
-                className="font-poppins text-gray-800 hover:text-green-600 flex items-center gap-1"
+                className="font-poppins text-gray-800 hover:text-green-600 flex items-center gap-1 text-sm md:text-sm lg:text-base whitespace-nowrap"
                 onClick={() => {
                   setIsEcoActivitiesOpen(!isEcoActivitiesOpen);
                   setIsCarbonCenterOpen(false);
@@ -93,12 +94,12 @@ const DashboardNavbar = () => {
                 />
               </button>
               {isEcoActivitiesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2">
+                <div className="absolute top-full left-0 mt-2 w-40 md:w-44 lg:w-48 bg-white rounded-md shadow-lg py-2">
                   {ecoActivitiesItems.map((item) => (
                     <Link
                       key={item.path}
                       to={item.path}
-                      className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 font-poppins"
+                      className="block px-3 md:px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 font-poppins text-sm"
                     >
                       {item.name}
                     </Link>
@@ -110,7 +111,7 @@ const DashboardNavbar = () => {
             {/* Carbon Center Dropdown */}
             <div className="relative">
               <button
-                className="font-poppins text-gray-800 hover:text-green-600 flex items-center gap-1"
+                className="font-poppins text-gray-800 hover:text-green-600 flex items-center gap-1 text-sm md:text-sm lg:text-base whitespace-nowrap"
                 onClick={() => {
                   setIsCarbonCenterOpen(!isCarbonCenterOpen);
                   setIsEcoActivitiesOpen(false);
@@ -124,12 +125,12 @@ const DashboardNavbar = () => {
                 />
               </button>
               {isCarbonCenterOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2">
+                <div className="absolute top-full left-0 mt-2 w-40 md:w-44 lg:w-48 bg-white rounded-md shadow-lg py-2">
                   {carbonCenterItems.map((item) => (
                     <Link
                       key={item.path}
                       to={item.path}
-                      className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 font-poppins"
+                      className="block px-3 md:px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 font-poppins text-sm"
                     >
                       {item.name}
                     </Link>
@@ -140,7 +141,7 @@ const DashboardNavbar = () => {
 
             <Link
               to="/rewards"
-              className={`font-poppins text-gray-800 hover:text-green-600 ${
+              className={`font-poppins text-gray-800 hover:text-green-600 text-sm md:text-sm lg:text-base whitespace-nowrap ${
                 location.pathname === '/rewards'
                   ? 'border-b-2 border-green-600'
                   : ''
@@ -150,7 +151,7 @@ const DashboardNavbar = () => {
             </Link>
             <Link
               to="/leaderboard"
-              className={`font-poppins text-gray-800 hover:text-green-600 ${
+              className={`font-poppins text-gray-800 hover:text-green-600 text-sm md:text-sm lg:text-base whitespace-nowrap ${
                 location.pathname === '/leaderboard'
                   ? 'border-b-2 border-green-600'
                   : ''
@@ -162,48 +163,42 @@ const DashboardNavbar = () => {
         </div>
 
         {/* Right: Icons */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 md:space-x-3">
           <Link
             to="/dashboard"
-            className="text-gray-600 hover:text-green-600 p-2 rounded-full hover:bg-gray-100"
+            className="text-gray-600 hover:text-green-600 p-1.5 md:p-2 rounded-full hover:bg-gray-100"
             aria-label="Shopping Cart"
           >
-            <ShoppingCart size={22} />
+            <ShoppingCart size={20} className="md:w-5 md:h-5 lg:w-6 lg:h-6" />
           </Link>
 
           {/* User Profile Icon with Dropdown */}
           <div className="relative" ref={dropdownRef}>
             <button
-              className="flex items-center text-gray-600 hover:text-green-600 p-2 rounded-full hover:bg-gray-100"
+              className="flex items-center text-gray-600 hover:text-green-600 p-1.5 md:p-2 rounded-full hover:bg-gray-100"
               onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
               aria-expanded={isUserDropdownOpen}
               aria-label="User menu"
             >
-              <User size={22} />
+              <User size={20} className="md:w-5 md:h-5 lg:w-6 lg:h-6" />
               <ChevronDown
-                size={16}
-                className={`ml-1 transition-transform duration-200 ${
+                size={14}
+                className={`ml-1 transition-transform duration-200 md:w-4 md:h-4 lg:w-5 lg:h-5 ${
                   isUserDropdownOpen ? 'rotate-180' : ''
                 }`}
               />
             </button>
             {isUserDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 fade-in">
+              <div className="absolute right-0 mt-2 w-40 md:w-44 lg:w-48 bg-white rounded-lg shadow-lg py-2 z-50 fade-in">
                 <Link
-                  to="/dashboard"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-green-600 transition-colors duration-200"
+                  to="/settings"
+                  className="block px-3 md:px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-green-600 transition-colors duration-200"
                 >
-                  Dashboard
-                </Link>
-                <Link
-                  to="/profile"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-green-600 transition-colors duration-200"
-                >
-                  Profile
+                  Settings
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-green-600 transition-colors duration-200"
+                  className="block w-full text-left px-3 md:px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-green-600 transition-colors duration-200"
                 >
                   Logout
                 </button>
@@ -212,11 +207,15 @@ const DashboardNavbar = () => {
           </div>
 
           <Link
-            to="/notifications"
-            className="text-gray-600 hover:text-green-600 p-2 rounded-full hover:bg-gray-100"
+            to="/settings"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/settings', { state: { activeTab: 'notifications' } });
+            }}
+            className="text-gray-700 hover:text-eco-green-dark transition-colors duration-200 p-1.5 md:p-2 rounded-full hover:bg-gray-100 relative"
             aria-label="Notifications"
           >
-            <Bell size={22} />
+            <Bell className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" />
           </Link>
         </div>
 

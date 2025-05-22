@@ -1,6 +1,7 @@
 import React from 'react';
 import './Hero.css';
 import { QrCode, Gift, Smile } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -14,7 +15,7 @@ const Hero = () => {
           Earn Points, Save the Planet & Get Exclusive Perks
         </p>
         <div className="hero-buttons">
-          <button className="btn btn-primary">Get Started</button>
+          <Link to="/signup" className="btn btn-primary">Get Started</Link>
           <button className="btn btn-secondary">Watch how it works</button>
         </div>
         <p className="hero-user-count">Join 50,000+ eco-conscious users!</p>
@@ -22,7 +23,7 @@ const Hero = () => {
       <div className="hero-features">
         <div className="feature-box mt-11">
           <QrCode size={48} color="white" />
-          <p>Snap the QR code on eco-friendly products to grab points</p>
+          <p>Scan the QR code on eco-friendly products to grab points</p>
         </div>
         <div className="feature-box mt-11">
           <Gift size={48} color="white" />

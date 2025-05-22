@@ -15,7 +15,13 @@
   background-image: url('../assets/kid-learning.png');
   background-size: cover;
   background-position: center;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.hero-background:hover {
+  transform: scale(1.03);
+}
+
 
 .hero-content {
   position: relative;

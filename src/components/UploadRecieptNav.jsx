@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate, useLocation, NavLink } from 'react-router-dom';
 import {
   ShoppingCart,
   User,
@@ -12,10 +13,10 @@ import {
   Users,
   Award,
 } from 'lucide-react';
-import { NavLink, useLocation } from 'react-router-dom';
 import Group from '../assets/Group.png';
 
 function UploadRecieptNav() {
+  const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
@@ -149,16 +150,10 @@ function UploadRecieptNav() {
               {isUserDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 fade-in">
                   <NavLink
-                    to="/dashboard"
+                    to="/settings"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-eco-green transition-colors duration-200"
                   >
-                    Dashboard
-                  </NavLink>
-                  <NavLink
-                    to="/profile"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-eco-green transition-colors duration-200"
-                  >
-                    Profile
+                    Settings
                   </NavLink>
                   <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-eco-green transition-colors duration-200">
                     Logout
@@ -168,13 +163,17 @@ function UploadRecieptNav() {
             </div>
 
             {/* Notification Bell Icon */}
-            <button
-              type="button"
-              className="p-1.5 rounded-full text-gray-600 hover:text-eco-green hover:bg-gray-100 transition-colors duration-200"
-              aria-label="View notifications"
+            <Link
+              to="/settings"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/settings', { state: { activeTab: 'notifications' } });
+              }}
+              className="text-gray-700 hover:text-eco-green-dark transition-colors duration-200 p-2 rounded-full hover:bg-gray-100 relative"
+              aria-label="Notifications"
             >
-              <Bell className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
-            </button>
+              <Bell className="w-5 h-5" />
+            </Link>
 
             {/* Mobile Menu Button */}
             <button

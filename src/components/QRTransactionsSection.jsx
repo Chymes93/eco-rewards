@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IoChevronForward, IoScan } from 'react-icons/io5';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const QRTransactionsSection = () => {
   const [isQRActive, setIsQRActive] = useState(false);
@@ -37,14 +38,14 @@ const QRTransactionsSection = () => {
 
   return (
     <div className="bg-white rounded-xl sm:rounded-3xl p-4 sm:p-8 shadow-lg">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+      <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8">
         {/* QR Code Section */}
-        <div className="flex flex-col items-center order-2 lg:order-1">
+        <div className="flex flex-col items-center">
           <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 font-poppins text-center">
             Scan QR Codes
           </h2>
           <motion.div
-            className={`bg-eco-green w-56 h-56 sm:w-64 sm:h-64 rounded-xl sm:rounded-2xl flex items-center justify-center p-4 mb-4 cursor-pointer relative overflow-hidden ${
+            className={`bg-eco-green w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-xl sm:rounded-2xl flex items-center justify-center p-4 mb-4 cursor-pointer relative overflow-hidden ${
               isQRActive ? 'ring-4 ring-white' : ''
             }`}
             onClick={handleQRClick}
@@ -80,14 +81,14 @@ const QRTransactionsSection = () => {
               </div>
 
               {/* Scan Icon Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                <div className="bg-black bg-opacity-40 rounded-full p-3">
-                  <IoScan className="text-white w-6 h-6" />
+              <div className="absolute inset-0 flex items-center justify-center opacity-100 sm:opacity-0 sm:hover:opacity-100 transition-opacity duration-300">
+                <div className="bg-black bg-opacity-40 rounded-full p-4 sm:p-3">
+                  <IoScan className="text-white w-8 h-8 sm:w-6 sm:h-6" />
                 </div>
               </div>
             </div>
           </motion.div>
-          <p className="text-center text-gray-600 text-sm sm:text-base font-poppins">
+          <p className="text-center text-gray-600 text-sm sm:text-base font-poppins mt-2 mb-2">
             Scan QR codes on Eco-Friendly products
             <br />
             and earn points
@@ -102,7 +103,7 @@ const QRTransactionsSection = () => {
         </div>
 
         {/* Recent Transactions Section */}
-        <div className="order-1 lg:order-2">
+        <div>
           <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 font-poppins">
             Recent Transactions
           </h2>
@@ -126,10 +127,13 @@ const QRTransactionsSection = () => {
               </div>
             ))}
           </div>
-          <button className="text-eco-green font-semibold flex items-center mt-4 hover:underline font-poppins text-sm sm:text-base transition-colors duration-200">
+          <Link
+            to="/receipt-history"
+            className="text-eco-green font-semibold flex items-center mt-4 hover:underline font-poppins text-sm sm:text-base transition-colors duration-200"
+          >
             View older transactions
             <IoChevronForward className="ml-1" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>

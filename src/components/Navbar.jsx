@@ -150,16 +150,10 @@ const Navbar = () => {
                 {isUserDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 fade-in">
                     <Link
-                      to="/dashboard"
+                      to="/settings"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-eco-green-dark transition-colors duration-200"
                     >
-                      Dashboard
-                    </Link>
-                    <Link
-                      to="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-eco-green-dark transition-colors duration-200"
-                    >
-                      Profile
+                      Settings
                     </Link>
                     <button
                       onClick={handleLogout}
@@ -172,8 +166,12 @@ const Navbar = () => {
               </div>
 
               <Link
-                to="/notifications"
-                className="text-gray-700 hover:text-eco-green-dark transition-colors duration-200 p-2 rounded-full hover:bg-gray-100"
+                to="/settings"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/settings', { state: { activeTab: 'notifications' } });
+                }}
+                className="text-gray-700 hover:text-eco-green-dark transition-colors duration-200 p-2 rounded-full hover:bg-gray-100 relative"
                 aria-label="Notifications"
               >
                 <Bell className="w-5 h-5" />
