@@ -121,7 +121,8 @@ const Navbar = () => {
         </div>
 
         {/* User Actions */}
-        <div className="flex items-center gap-3">
+        {/* Desktop User Actions (hidden on mobile) */}
+        <div className="hidden lg:flex items-center gap-3">
           {currentUser ? (
             <>
               <Link
@@ -131,7 +132,6 @@ const Navbar = () => {
               >
                 <ShoppingCart className="w-5 h-5" />
               </Link>
-
               {/* User Profile Icon with Dropdown */}
               <div className="relative" ref={dropdownRef}>
                 <button
@@ -164,12 +164,13 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-
               <Link
                 to="/settings"
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate('/settings', { state: { activeTab: 'notifications' } });
+                  navigate('/settings', {
+                    state: { activeTab: 'notifications' },
+                  });
                 }}
                 className="text-gray-700 hover:text-eco-green-dark transition-colors duration-200 p-2 rounded-full hover:bg-gray-100 relative"
                 aria-label="Notifications"
@@ -178,7 +179,7 @@ const Navbar = () => {
               </Link>
             </>
           ) : (
-            <div className="flex items-center gap-3">
+            <>
               <Link
                 to="/login"
                 className="px-4 py-2 text-gray-700 hover:text-eco-green-dark border border-gray-300 hover:border-eco-green rounded-md text-center transition-colors duration-200"
@@ -191,21 +192,20 @@ const Navbar = () => {
               >
                 Sign Up
               </Link>
-            </div>
+            </>
           )}
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden text-gray-700 hover:text-eco-green-dark transition-colors duration-200 p-2 rounded-full hover:bg-gray-100"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
         </div>
+        {/* Mobile Menu Button */}
+        <button
+          className="lg:hidden text-gray-700 hover:text-eco-green-dark transition-colors duration-200 p-2 rounded-full hover:bg-gray-100"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
+        </button>
       </div>
 
       {/* Mobile Menu */}
@@ -222,7 +222,6 @@ const Navbar = () => {
             >
               Home
             </Link>
-
             {currentUser && (
               <Link
                 to="/dashboard"
@@ -235,7 +234,6 @@ const Navbar = () => {
                 Dashboard
               </Link>
             )}
-
             <Link
               to="/rewards"
               className={`font-poppins ${
@@ -266,7 +264,23 @@ const Navbar = () => {
             >
               Community
             </Link>
-
+            {/* Show login/signup in mobile menu if logged out */}
+            {!currentUser && (
+              <div className="flex flex-col gap-3 mt-2">
+                <Link
+                  to="/login"
+                  className="w-full px-4 py-2 text-gray-700 hover:text-eco-green-dark border border-gray-300 hover:border-eco-green rounded-md text-center transition-colors duration-200"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="w-full px-4 py-2 bg-eco-green text-white rounded-md hover:bg-eco-green-dark text-center transition-colors duration-200"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            )}
             {currentUser && (
               <button
                 onClick={handleLogout}

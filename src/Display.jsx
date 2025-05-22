@@ -69,7 +69,6 @@ const Display = () => {
             <Route path="/verify-email" element={<VerifyEmail />} />
             <Route path="/verify-phone" element={<VerifyPhone />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/rewards" element={<RewardsPage />} />
             <Route
               path="/dashboard"
               element={
@@ -132,6 +131,14 @@ const Display = () => {
               element={
                 <ProtectedRoute>
                   <Settings />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/rewards"
+              element={
+                <ProtectedRoute>
+                  <RewardsPage />
                 </ProtectedRoute>
               }
             />
