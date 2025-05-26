@@ -37,22 +37,39 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
       setAuthError(null);
 
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch(
+        'https://ecorewards-deploy.vercel.app/api/v1/auth/register',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            accept: 'application/json',
+          },
+          body: JSON.stringify({
+            name: userData.fullName,
+            email: userData.email,
+            password: userData.password,
+          }),
+        }
+      );
 
-      // Store temporary user data for verification
-      setTempUserData(userData);
+      const data = await response.json();
 
-      // Generate a random verification ID
-      const verificationId = Math.random().toString(36).substring(2, 10);
-      setVerificationId(verificationId);
+      if (!response.ok) {
+        throw new Error(data.error || 'Registration failed');
+      }
 
-      // Determine verification method based on provided data
-      const method = userData.email ? 'email' : 'phone';
-      setVerificationMethod(method);
+      // Store user data and token
+      const user = {
+        ...data.user,
+        token: data.token,
+      };
 
-      // Navigate to verification page
-      navigate(`/verify-${method}`);
+      localStorage.setItem('ecoRewardsUser', JSON.stringify(user));
+      setCurrentUser(user);
+
+      // Navigate to home page on successful registration
+      navigate('/');
 
       return { success: true };
     } catch (error) {
@@ -69,24 +86,37 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
       setAuthError(null);
 
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch(
+        'https://ecorewards-deploy.vercel.app/api/v1/auth/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            accept: 'application/json',
+          },
+          body: JSON.stringify({
+            email: credentials.email,
+            password: credentials.password,
+          }),
+        }
+      );
 
-      // For demo purposes, we'll accept any credentials
-      // In a real app, this would validate against a backend
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Login failed');
+      }
+
+      // Store user data and token
       const user = {
-        id: Math.random().toString(36).substring(2, 10),
-        name: credentials.email.split('@')[0],
-        email: credentials.email,
-        points: 1000,
-        ...credentials,
+        ...data.user,
+        token: data.token,
       };
 
-      // Store user in local storage
       localStorage.setItem('ecoRewardsUser', JSON.stringify(user));
       setCurrentUser(user);
 
-      // Navigate to landing page
+      // Navigate to home page
       navigate('/');
 
       return { success: true };

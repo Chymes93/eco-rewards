@@ -1145,10 +1145,10 @@ const Settings = () => {
           {/* Notifications Tab */}
           {activeTab === 'notifications' && (
             <div>
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex justify-between items-center mb-4 sm:mb-6">
                 <button
                   onClick={markAllAsRead}
-                  className="flex items-center text-green-600 hover:text-green-700 transition-colors"
+                  className="flex items-center text-green-600 hover:text-green-700 transition-colors bg-green-50 px-3 py-2 rounded-lg text-sm sm:text-base min-h-[44px] min-w-[44px] sm:bg-transparent sm:px-2 sm:py-1"
                 >
                   <svg
                     className="w-5 h-5 mr-1"
@@ -1168,7 +1168,7 @@ const Settings = () => {
                 </button>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="bg-gray-50 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-all duration-300">
                 {notifications.length === 0 ? (
                   <div className="text-center py-12 animate-pulse">
                     <svg
@@ -1196,21 +1196,21 @@ const Settings = () => {
                     {notifications.map((notification, index) => (
                       <div
                         key={notification.id}
-                        className={`border-b pb-4 last:border-b-0 last:pb-0 hover:bg-white rounded-lg p-3 transition-all duration-300 transform hover:-translate-y-1 ${
+                        className={`border-b pb-2 sm:pb-4 last:border-b-0 last:pb-0 hover:bg-white rounded-lg p-2 sm:p-3 transition-all duration-300 transform hover:-translate-y-1 ${
                           notification.read ? '' : 'bg-blue-50 bg-opacity-40'
                         }`}
                         style={{ animationDelay: `${index * 0.1}s` }}
                       >
-                        <div className="flex justify-between items-start mb-1">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1 gap-2">
                           <div className="flex items-start">
                             {notification.read ? (
                               <button
                                 onClick={() => markAsUnread(notification.id)}
-                                className="mr-2 text-green-600 flex-shrink-0 mt-1 hover:text-green-800 transition-colors duration-200 hover:scale-110 transform"
+                                className="mr-2 text-green-600 flex-shrink-0 mt-1 hover:text-green-800 transition-colors duration-200 hover:scale-110 transform min-h-[44px] min-w-[44px] flex items-center justify-center"
                                 title="Mark as unread"
                               >
                                 <svg
-                                  className="w-5 h-5"
+                                  className="w-6 h-6 sm:w-5 sm:h-5"
                                   viewBox="0 0 24 24"
                                   fill="none"
                                   xmlns="http://www.w3.org/2000/svg"
@@ -1227,11 +1227,11 @@ const Settings = () => {
                             ) : (
                               <button
                                 onClick={() => markAsRead(notification.id)}
-                                className="mr-2 text-gray-500 flex-shrink-0 mt-1 hover:text-green-600 transition-colors duration-200 hover:scale-110 transform"
+                                className="mr-2 text-gray-500 flex-shrink-0 mt-1 hover:text-green-600 transition-colors duration-200 hover:scale-110 transform min-h-[44px] min-w-[44px] flex items-center justify-center"
                                 title="Mark as read"
                               >
                                 <svg
-                                  className="w-5 h-5"
+                                  className="w-6 h-6 sm:w-5 sm:h-5"
                                   viewBox="0 0 24 24"
                                   fill="none"
                                   xmlns="http://www.w3.org/2000/svg"
@@ -1247,7 +1247,7 @@ const Settings = () => {
                               </button>
                             )}
 
-                            <div className="flex-shrink-0 mr-3">
+                            <div className="flex-shrink-0 mr-2 sm:mr-3">
                               <div className="bg-gray-400 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden p-1 shadow-sm hover:shadow transition-all duration-300 hover:bg-gray-500">
                                 <img
                                   src={notification.icon}
@@ -1258,7 +1258,7 @@ const Settings = () => {
                             </div>
 
                             <div
-                              className="group cursor-pointer"
+                              className="group cursor-pointer flex-1 overflow-hidden"
                               onClick={() =>
                                 navigate(
                                   `/notifications-detail/${notification.id}`,
@@ -1268,22 +1268,22 @@ const Settings = () => {
                                 )
                               }
                             >
-                              <div className="flex items-center">
-                                <h5 className="font-semibold group-hover:text-green-600 transition-colors duration-300">
+                              <div className="flex items-center flex-wrap">
+                                <h5 className="font-semibold group-hover:text-green-600 transition-colors duration-300 text-sm sm:text-base break-words">
                                   {notification.title}
                                 </h5>
                                 {!notification.read && (
                                   <span className="ml-2 inline-flex h-2 w-2 rounded-full bg-green-500 animate-ping opacity-75"></span>
                                 )}
                               </div>
-                              <p className="text-sm text-gray-600 mt-1 group-hover:text-gray-900 transition-colors duration-300">
+                              <p className="text-xs sm:text-sm text-gray-600 mt-1 group-hover:text-gray-900 transition-colors duration-300 break-words line-clamp-2 sm:line-clamp-none">
                                 {notification.message}
                               </p>
                             </div>
                           </div>
 
-                          <div className="flex items-center">
-                            <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full hover:bg-gray-200 transition-colors duration-300">
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mt-2 sm:mt-0">
+                            <span className="text-xs sm:text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full hover:bg-gray-200 transition-colors duration-300 order-2 sm:order-1">
                               {new Date(notification.date).toLocaleDateString(
                                 'en-US',
                                 {
@@ -1297,7 +1297,7 @@ const Settings = () => {
                               onClick={() =>
                                 deleteNotification(notification.id)
                               }
-                              className="ml-3 hover:scale-110 transform"
+                              className="hover:scale-110 transform order-1 sm:order-2 sm:ml-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
                               title="Delete notification"
                             >
                               <img
